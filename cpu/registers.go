@@ -11,6 +11,18 @@ type Registers struct {
 	l uint8
 }
 
+func (r Registers) GetZeroFlag() bool {
+	return ((r.f >> 7) & 0x0F) != 0
+}
+
+func (r *Registers) SetZeroFlag(value bool) {
+	if value {
+		r.f = r.f | (uint8(1) << 7)
+	} else {
+		r.f = r.f & ^(uint8(1) << 7)
+	}
+}
+
 func (r Registers) GetAF() uint16 {
 	return getVirtual(r.a, r.f)
 }

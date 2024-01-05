@@ -81,3 +81,26 @@ func TestSetHL(t *testing.T) {
 	assert.Equal(t, uint8(128), r.h) // 10000000
 	assert.Equal(t, uint8(170), r.l) // 10101010
 }
+
+func TestGetZeroFlag(t *testing.T) {
+	var r = Registers{f: 128}
+
+	var actual = r.GetZeroFlag()
+	assert.Equal(t, true, actual)
+
+	r = Registers{}
+	actual = r.GetZeroFlag()
+	assert.Equal(t, false, actual)
+}
+
+func TestSetZeroFlag(t *testing.T) {
+	var r = Registers{f: 128}
+
+	assert.Equal(t, true, r.GetZeroFlag())
+
+	r.SetZeroFlag(false)
+	assert.Equal(t, false, r.GetZeroFlag())
+
+	r.SetZeroFlag(true)
+	assert.Equal(t, true, r.GetZeroFlag())
+}
