@@ -12,15 +12,35 @@ type Registers struct {
 }
 
 func (r Registers) GetZeroFlag() bool {
-	return ((r.f >> 7) & 0x0F) != 0
+	return getFlag(r, 7)
 }
 
-func (r *Registers) SetZeroFlag(value bool) {
-	if value {
-		r.f = r.f | (uint8(1) << 7)
-	} else {
-		r.f = r.f & ^(uint8(1) << 7)
-	}
+func (r *Registers) SetZeroFlag(val bool) {
+	setFlag(r, 7, val)
+}
+
+func (r Registers) GetSubtractFlag() bool {
+	return getFlag(r, 6)
+}
+
+func (r *Registers) SetSubtractFlag(val bool) {
+	setFlag(r, 6, val)
+}
+
+func (r Registers) GetHalfCarryFlag() bool {
+	return getFlag(r, 5)
+}
+
+func (r *Registers) SetHalfCarryFlag(val bool) {
+	setFlag(r, 5, val)
+}
+
+func (r Registers) GetCarryFlag() bool {
+	return getFlag(r, 4)
+}
+
+func (r *Registers) SetCarryFlag(val bool) {
+	setFlag(r, 4, val)
 }
 
 func (r Registers) GetAF() uint16 {
@@ -62,4 +82,16 @@ func getVirtual(r1 uint8, r2 uint8) uint16 {
 func setVirtual(r1 *uint8, r2 *uint8, val uint16) {
 	*r1 = uint8((val & 0xFF00) >> 8)
 	*r2 = uint8((val & 0x00FF))
+}
+
+func getFlag(r Registers, bitIndex uint8) bool {
+	return ((r.f >> bitIndex) & 0x01) != 0
+}
+
+func setFlag(r *Registers, bitIndex uint8, val bool) {
+	if val {
+		r.f = r.f | (uint8(1) << bitIndex)
+	} else {
+		r.f = r.f & ^(uint8(1) << bitIndex)
+	}
 }
