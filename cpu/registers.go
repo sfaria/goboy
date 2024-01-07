@@ -1,14 +1,14 @@
 package cpu
 
 type Registers struct {
-	a uint8
-	b uint8
-	c uint8
-	d uint8
-	e uint8
-	f uint8
-	h uint8
-	l uint8
+	A uint8
+	B uint8
+	C uint8
+	D uint8
+	E uint8
+	F uint8
+	H uint8
+	L uint8
 }
 
 func (r Registers) GetZeroFlag() bool {
@@ -44,35 +44,35 @@ func (r *Registers) SetCarryFlag(val bool) {
 }
 
 func (r Registers) GetAF() uint16 {
-	return getVirtual(r.a, r.f)
+	return getVirtual(r.A, r.F)
 }
 
 func (r *Registers) SetAF(val uint16) {
-	setVirtual(&r.a, &r.f, val)
+	setVirtual(&r.A, &r.F, val)
 }
 
 func (r Registers) GetBC() uint16 {
-	return getVirtual(r.b, r.c)
+	return getVirtual(r.B, r.C)
 }
 
 func (r *Registers) SetBC(val uint16) {
-	setVirtual(&r.b, &r.c, val)
+	setVirtual(&r.B, &r.C, val)
 }
 
 func (r Registers) GetDE() uint16 {
-	return getVirtual(r.d, r.e)
+	return getVirtual(r.D, r.E)
 }
 
 func (r *Registers) SetDE(val uint16) {
-	setVirtual(&r.d, &r.e, val)
+	setVirtual(&r.D, &r.E, val)
 }
 
 func (r Registers) GetHL() uint16 {
-	return getVirtual(r.h, r.l)
+	return getVirtual(r.H, r.L)
 }
 
 func (r *Registers) SetHL(val uint16) {
-	setVirtual(&r.h, &r.l, val)
+	setVirtual(&r.H, &r.L, val)
 }
 
 func getVirtual(r1 uint8, r2 uint8) uint16 {
@@ -85,13 +85,13 @@ func setVirtual(r1 *uint8, r2 *uint8, val uint16) {
 }
 
 func getFlag(r Registers, bitIndex uint8) bool {
-	return ((r.f >> bitIndex) & 0x01) != 0
+	return ((r.F >> bitIndex) & 0x01) != 0
 }
 
 func setFlag(r *Registers, bitIndex uint8, val bool) {
 	if val {
-		r.f = r.f | (uint8(1) << bitIndex)
+		r.F = r.F | (uint8(1) << bitIndex)
 	} else {
-		r.f = r.f & ^(uint8(1) << bitIndex)
+		r.F = r.F & ^(uint8(1) << bitIndex)
 	}
 }

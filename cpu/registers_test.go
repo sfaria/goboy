@@ -8,8 +8,8 @@ import (
 
 func TestGetAF(t *testing.T) {
 	var r = Registers{
-		a: 128, // 10000000
-		f: 170, // 10101010
+		A: 128, // 10000000
+		F: 170, // 10101010
 	}
 
 	var actual = r.GetAF()
@@ -21,14 +21,14 @@ func TestSetAF(t *testing.T) {
 	var r = Registers{}
 	r.SetAF(32938) // 1000000010101010
 
-	assert.Equal(t, uint8(128), r.a) // 10000000
-	assert.Equal(t, uint8(170), r.f) // 10101010
+	assert.Equal(t, uint8(128), r.A) // 10000000
+	assert.Equal(t, uint8(170), r.F) // 10101010
 }
 
 func TestGetBC(t *testing.T) {
 	var r = Registers{
-		b: 128, // 10000000
-		c: 170, // 10101010
+		B: 128, // 10000000
+		C: 170, // 10101010
 	}
 
 	var actual = r.GetBC()
@@ -40,14 +40,14 @@ func TestSetBC(t *testing.T) {
 	var r = Registers{}
 	r.SetBC(32938) // 1000000010101010
 
-	assert.Equal(t, uint8(128), r.b) // 10000000
-	assert.Equal(t, uint8(170), r.c) // 10101010
+	assert.Equal(t, uint8(128), r.B) // 10000000
+	assert.Equal(t, uint8(170), r.C) // 10101010
 }
 
 func TestGetDE(t *testing.T) {
 	var r = Registers{
-		d: 128, // 10000000
-		e: 170, // 10101010
+		D: 128, // 10000000
+		E: 170, // 10101010
 	}
 
 	var actual = r.GetDE()
@@ -59,14 +59,14 @@ func TestSetDE(t *testing.T) {
 	var r = Registers{}
 	r.SetDE(32938) // 1000000010101010
 
-	assert.Equal(t, uint8(128), r.d) // 10000000
-	assert.Equal(t, uint8(170), r.e) // 10101010
+	assert.Equal(t, uint8(128), r.D) // 10000000
+	assert.Equal(t, uint8(170), r.E) // 10101010
 }
 
 func TestGetHL(t *testing.T) {
 	var r = Registers{
-		h: 128, // 10000000
-		l: 170, // 10101010
+		H: 128, // 10000000
+		L: 170, // 10101010
 	}
 
 	var actual = r.GetHL()
@@ -78,12 +78,12 @@ func TestSetHL(t *testing.T) {
 	var r = Registers{}
 	r.SetHL(32938) // 1000000010101010
 
-	assert.Equal(t, uint8(128), r.h) // 10000000
-	assert.Equal(t, uint8(170), r.l) // 10101010
+	assert.Equal(t, uint8(128), r.H) // 10000000
+	assert.Equal(t, uint8(170), r.L) // 10101010
 }
 
 func TestGetZeroFlag(t *testing.T) {
-	var r = Registers{f: 128}
+	var r = Registers{F: 128}
 
 	var actual = r.GetZeroFlag()
 	assert.True(t, actual)
@@ -94,7 +94,7 @@ func TestGetZeroFlag(t *testing.T) {
 }
 
 func TestSetZeroFlag(t *testing.T) {
-	var r = Registers{f: 128}
+	var r = Registers{F: 128}
 
 	assert.True(t, r.GetZeroFlag())
 
@@ -106,7 +106,7 @@ func TestSetZeroFlag(t *testing.T) {
 }
 
 func TestGetSubtractFlag(t *testing.T) {
-	var r = Registers{f: 64}
+	var r = Registers{F: 64}
 
 	var actual = r.GetSubtractFlag()
 	assert.True(t, actual)
@@ -117,7 +117,7 @@ func TestGetSubtractFlag(t *testing.T) {
 }
 
 func TestSetSubtractFlag(t *testing.T) {
-	var r = Registers{f: 64}
+	var r = Registers{F: 64}
 
 	assert.True(t, r.GetSubtractFlag())
 
@@ -129,7 +129,7 @@ func TestSetSubtractFlag(t *testing.T) {
 }
 
 func TestGetHalfCarryFlag(t *testing.T) {
-	var r = Registers{f: 32}
+	var r = Registers{F: 32}
 
 	var actual = r.GetHalfCarryFlag()
 	assert.True(t, actual)
@@ -140,7 +140,7 @@ func TestGetHalfCarryFlag(t *testing.T) {
 }
 
 func TestSetHalfCarryFlag(t *testing.T) {
-	var r = Registers{f: 32}
+	var r = Registers{F: 32}
 
 	assert.True(t, r.GetHalfCarryFlag())
 
@@ -152,7 +152,7 @@ func TestSetHalfCarryFlag(t *testing.T) {
 }
 
 func TestGetCarryFlag(t *testing.T) {
-	var r = Registers{f: 16}
+	var r = Registers{F: 16}
 
 	var actual = r.GetCarryFlag()
 	assert.True(t, actual)
@@ -163,7 +163,7 @@ func TestGetCarryFlag(t *testing.T) {
 }
 
 func TestSetCarryFlag(t *testing.T) {
-	var r = Registers{f: 16}
+	var r = Registers{F: 16}
 
 	assert.True(t, r.GetCarryFlag())
 
