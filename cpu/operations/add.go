@@ -7,10 +7,10 @@ import (
 
 func Add(r *cpu.Registers, target RegisterTarget) (uint8, error) {
 	if target == A {
-		return 0, fmt.Errorf("register a cannot be the target of an add instruction")
+		return 0, fmt.Errorf("register a cannot be the target of an ADD instruction")
 	}
 
-	var val, err = target.getValue(*r)
+	var val, err = target.GetValue(*r)
 	if err != nil {
 		return 0, err
 	}
