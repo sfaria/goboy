@@ -12,3 +12,7 @@ func LDnnn(r *cpu.Registers, target RegisterTarget, n uint8) (uint8, error) {
 
 	return target.SetValue(r, n)
 }
+
+func LDr1r2(r *cpu.Registers, r1 RegisterTarget, r2 RegisterTarget) (uint8, error) {
+	return 0, fmt.Errorf("Unimplemented")
+}
